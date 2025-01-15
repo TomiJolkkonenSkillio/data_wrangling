@@ -21,3 +21,6 @@ def get_users():
     })
 
     return(users)
+
+def get_users_ids(dataframe):
+    return dataframe['user_id'].tolist()

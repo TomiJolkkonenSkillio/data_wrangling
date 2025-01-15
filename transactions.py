@@ -1,18 +1,22 @@
 import pandas as pd
 import numpy as np
+import product_catalogue
 import users
-import products
 from faker import Faker
-from datetime import datetime
 
 fake = Faker()
 
 # Transactions data
 def get_transactions():
-    num_transactions = 200
+    products=product_catalogue.get_product_catalog()
+    product_ids=product_catalogue.get_product_ids(products)
+    users_data=users.get_users()
+    users_ids=users.get_users_ids(users_data)
+
+    num_transactions = 20
     transaction_ids = np.arange(1, num_transactions + 1)
-    user_id_choices = np.random.choice(users.get_users(user_ids), num_transactions)
-    product_id_choices = np.random.choice(products.get_products['product_id'], num_transactions)
+    user_id_choices = users_ids
+    product_id_choices = product_ids
     quantities = np.random.randint(1, 5, size=num_transactions)  # Random quantities between 1 and 4
     transaction_dates = [
         fake.date_between(start_date='-25y', end_date='-1y') for _ in range(num_transactions)
@@ -27,4 +31,4 @@ def get_transactions():
     })
 
 
-    return(transactions)
+    return users_data, products, transactions
