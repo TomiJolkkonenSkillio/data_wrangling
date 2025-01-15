@@ -1,12 +1,10 @@
-import users
-import product_catalogue
 import transactions
 
-
 def main():
-    print(users.get_users())
-    print(products.get_product_catalog())
-    print(transactions.get_transactions())
+    users, products, transaction_data=transactions.get_transactions()
+    print(users)
+    print(products)
+    print(transaction_data)
 
 if __name__ == "__main__":
     main()
