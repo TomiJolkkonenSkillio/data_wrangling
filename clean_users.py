@@ -35,6 +35,15 @@ def handle_dublicate_values_in_id(df):
     df = df.drop_duplicates(subset='user_id', keep='first')
     return df
 
+def get_cleaned_users(dataframe):
+    dataframe = convert_signupdate(dataframe)
+    dataframe = convert_email(dataframe)
+    get_data_description(dataframe)
+    get_number_of_missing_values(dataframe)
+    dataframe = handle_dublicate_values_in_id(dataframe)
+    return dataframe
+
+
 def main():
     dataframe = read_products_data()
     dataframe = convert_signupdate(dataframe)

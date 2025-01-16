@@ -46,7 +46,7 @@ def get_product_catalog(num_products=20):
         category = random.choice(list(categories.keys()))
         product_name = random.choice(categories[category])
         product = {
-            "Product ID": np.random.randint(0, 21),
+            "product_id": np.random.randint(0, 21),
             "Product Name": product_name if random.random() > 0.2 else None,
             "Category": category if random.random() > 0.2 else None,
             "Price": round(random.uniform(5.0, 500.0), 2) if random.random() > 0.2 else None,  # Random price between 5€ and 500€

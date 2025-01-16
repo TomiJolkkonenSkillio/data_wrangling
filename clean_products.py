@@ -33,7 +33,7 @@ def convert_category(column):
         return np.nan 
    
 def handle_wrong_datatype_in_id(df):
-    df['Product ID']=pd.to_numeric(df['Product ID'], errors='coerce')
+    df['product_id']=pd.to_numeric(df['product_id'], errors='coerce')
 
 def handle_wrong_datatype_in_price(df):
     df['Price'] = pd.to_numeric(df['Price'], errors='coerce')
@@ -42,11 +42,11 @@ def handle_wrong_datatype_in_name_and_category(df,column:str):
     df[column]=df[column].apply(convert_category)
 
 def handle_dublicate_values_in_id(df):
-    df['Product ID'] = df['Product ID'].drop_duplicates()
+    df['product_id'] = df['product_id'].drop_duplicates()
 
 def drop_missing_ids(df):
     # Drop rows where 'Product ID' is NaN
-    df.dropna(subset=['Product ID'], inplace=True)
+    df.dropna(subset=['product_id'], inplace=True)
      # Reset the index in place to ensure continuity
     df.reset_index(drop=True, inplace=True)
 
