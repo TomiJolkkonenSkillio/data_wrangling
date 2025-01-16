@@ -45,9 +45,22 @@ def handle_wrong_datatype_in_name_and_category(df,column:str):
 def handle_dublicate_values_in_id(df):
     df['Product ID'] = df['Product ID'].drop_duplicates()
 
+def drop_missing_ids(df):
+    # Drop rows where 'Product ID' is NaN
+    df.dropna(subset=['Product ID'], inplace=True)
+     # Reset the index in place to ensure continuity
+    df.reset_index(drop=True, inplace=True)
+
 def get_number_of_missing_values(df):
     missing_values=df.isna().sum()
 
+def get_cleaned_products(dataframe):
+    handle_wrong_datatype_in_id(dataframe)
+    handle_wrong_datatype_in_price(dataframe)
+    handle_wrong_datatype_in_name_and_category(dataframe, 'Category')
+    handle_dublicate_values_in_id(dataframe)
+    drop_missing_ids(dataframe)
+    return dataframe
 
 def main():
     dataframe=read_products_data()
@@ -55,8 +68,8 @@ def main():
     handle_wrong_datatype_in_price(dataframe)
     handle_wrong_datatype_in_name_and_category(dataframe, 'Category')
     handle_dublicate_values_in_id(dataframe)
+    drop_missing_ids(dataframe)
     print(dataframe)
-
 
 if __name__ == '__main__':
     main()
