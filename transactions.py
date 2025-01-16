@@ -31,7 +31,7 @@ def main():
     # Generate transactions data with 20 transactions
     transactions_data = get_transactions()
     # Save to a CSV file
-    transactions_data.to_csv("transactions_data_with_rubbish.csv", index=False)
+    transactions_data.to_csv("transactions_data.csv", index=False)
 
 
 if __name__ == "__main__":
