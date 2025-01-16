@@ -20,7 +20,14 @@ def get_users():
         'signup_date': signup_dates
     })
 
-    return(users)
+    return users
 
-def get_users_ids(dataframe):
-    return dataframe['user_id'].tolist()
+def main():
+    # Generate user data with 20 users
+    users_data = get_users()
+    # Save to a CSV file
+    users_data.to_csv("users_data_with_rubbish.csv", index=False)
+
+
+if __name__ == "__main__":
+    main()

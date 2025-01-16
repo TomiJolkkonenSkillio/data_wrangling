@@ -1,11 +1,27 @@
-import transactions
+
 import pandas as pd
 
+def read_products_data():
+    file_path='product_catalog_with_rubbish.csv'
+    df=pd.read_csv(file_path)
+    return df
+
+def read_users_data():
+    file_path='users_data_with_rubbish.csv'
+    df=pd.read_csv(file_path)
+    return df
+
+def read_transactions_data():
+    file_path='transactions_data_with_rubbish.csv'
+    df=pd.read_csv(file_path)
+    return df
+
 def main():
-    users, products, transaction_data=transactions.get_transactions()
-    print(users)
-    print(products)
-    print(transaction_data)
+    
+    products_data=read_products_data()
+    users_data=read_users_data()
+    transaction_data=read_transactions_data()
+    
     
     # total_spending = transaction_data.groupby('user_id')['quantity'].sum() # total spending per user
     # print(f"Total spending per user: {total_spending}")
